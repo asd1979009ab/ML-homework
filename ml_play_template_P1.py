@@ -12,7 +12,7 @@ class MLPlay:
         self.ball_served = False
         self.previous_ball = (0, 0)
         self.pred=100
-        self.side="2P"
+        self.side="1P"
     def update(self, scene_info):
         """
         Generate the command according to the received `scene_info`.
@@ -46,9 +46,9 @@ class MLPlay:
                 self.pred = abs(self.pred)
 
             # 判斷command
-            if scene_info["platform_2P"][0]+20 - 5 > self.pred:
+            if scene_info["platform_1P"][0]+20 - 5 > self.pred:
                 command = "MOVE_LEFT"
-            elif scene_info["platform_2P"][0]+20 + 5 < self.pred:
+            elif scene_info["platform_1P"][0]+20 + 5 < self.pred:
                 command = "MOVE_RIGHT"
             else:
                 command = "NONE"
